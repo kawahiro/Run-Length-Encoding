@@ -3,6 +3,10 @@
 #include <sstream>
 using namespace std;
 
+int main() {
+	rle().run();
+}
+
 class rle {
 	int i;
 	int j;
@@ -104,8 +108,4 @@ public:
 	}
 
 };
-
-int main() {
-	rle().run();
-}
 
