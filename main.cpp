@@ -77,7 +77,7 @@ public:
 		}
 	}
 
-;};
+};
 
 int main() {
 
