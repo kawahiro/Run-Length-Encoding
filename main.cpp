@@ -15,6 +15,16 @@ class rle {
 	int m;
 public:
 
+        void compcv(){
+        	suu2=0;
+        	if(stat=0){
+        		encode();
+        	}else{
+        		decode();
+        	}
+        	
+        }
+
 	void encode() {
 		i = 1;
 		while (i < suu1) {
