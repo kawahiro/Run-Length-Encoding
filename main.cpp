@@ -6,33 +6,44 @@ using namespace std;
 class rle {
 	int i;
 	int j;
-	stringstream s;
+	stringstream ss;
+	string s;
 	string str1[];
 	string str2[];
 	int suu1;
 	int suu2;
 	int cnt;
 	int m;
+	int stat;
 public:
+	void run(){
+		getline(cin,s);
+		cin>>stat;
+	}
 
-        void compcv(){
-        	suu2=0;
-        	if(stat=0){
-        		encode();
-        	}else{
-        		decode();
-        	}
-        	
-        }
+	void compcv() {
+		suu2 = 0;
+		if (stat == 0) {
+			string encode(s);
+			cout<<encode<<endl;
+		} else {
+			string decode(s);
+			cout<<decode<<endl;
+		}
 
-	void encode() {
+	}
+	void encode(const string & s) {
 		i = 1;
+		for(int a=0;a<s.length();a++){
+			str1[a]=s;
+			cout<<str1[a];
+		}
 		while (i < suu1) {
 			cnt = 1;
 			j = i + 1;
-			while(j < suu1 && str1[i] == str1[j]) {
-				cnt+=1;
-				j+=1;
+			while (j < suu1 && str1[i] == str1[j]) {
+				cnt += 1;
+				j += 1;
 			}
 			if (cnt > 2) {
 				while (cnt > 255) {
@@ -63,26 +74,31 @@ public:
 			}
 		}
 
+
 	}
-	void decode() {
-		i=0;
+	void decode(const string & s) {
+		i = 0;
 		std::string wk;
-		while(i<suu1){
-			if(str1[i] == str2[suu2+1]){
-				wk=str1[i];
-				s<<str1[i+1];
-				s>>j;
-				i+=2;
-				cnt=0;
-				while(cnt<j){
-					str2[suu2]=wk;
-					cnt+=1;
-					suu2+=1;
+		for(int a=0;a<s.length();a++){
+					str1[a]=s;
+					cout<<str1[a];
 				}
-			}else{
-				str2[suu2]=str1[i];
-				suu2+=1;
-				i+=1;
+		while (i < suu1) {
+			if (str1[i] == str2[suu2 + 1]) {
+				wk = str1[i];
+				ss << str1[i + 1];
+				ss >> j;
+				i += 2;
+				cnt = 0;
+				while (cnt < j) {
+					str2[suu2] = wk;
+					cnt += 1;
+					suu2 += 1;
+				}
+			} else {
+				str2[suu2] = str1[i];
+				suu2 += 1;
+				i += 1;
 			}
 		}
 	}
@@ -90,5 +106,6 @@ public:
 };
 
 int main() {
-
+	rle().run();
 }
+
